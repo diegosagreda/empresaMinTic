@@ -31,15 +31,14 @@ public class EmpresaController{
 
     //Editar empresa
     @PatchMapping("/empresas/{id}")
-    public void editarEmpresa(@PathVariable("id") Long idEmpresa, @RequestBody Empresa empresa){
+    public void editarEmpresa(@PathVariable("id") Long idempresa, @RequestBody Empresa empresa){
         empresaService.guardarEmpresa(empresa);
     }
 
     //Eliminar empresa
     @DeleteMapping ("/empresas/{id}")
-    public void eliminarEmpresa(@PathVariable("id") Long idEmpresa){
-        empresaService.eliminarEmpresa(idEmpresa);
+    public void eliminarEmpresa(@PathVariable("id") Long idempresa){
+        empresaService.eliminarEmpresa(idempresa);
     }
-
 
 }

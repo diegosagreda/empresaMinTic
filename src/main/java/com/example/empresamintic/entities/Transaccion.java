@@ -9,7 +9,7 @@ public class Transaccion implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idTransaccion;
+    private Long idtransaccion;
     private String monto;
     private String concepto;
     private String fecha;
@@ -23,11 +23,11 @@ public class Transaccion implements Serializable {
     private Empresa empresa;
 
     public Long getIdTransaccion() {
-        return idTransaccion;
+        return idtransaccion;
     }
 
-    public void setIdTransaccion(Long idTransaccion) {
-        this.idTransaccion = idTransaccion;
+    public void setIdTransaccion(Long idtransaccion) {
+        this.idtransaccion = idtransaccion;
     }
 
     public String getMonto() {
@@ -73,7 +73,7 @@ public class Transaccion implements Serializable {
     @Override
     public String toString() {
         return "Transaccion{" +
-                "idTransaccion=" + idTransaccion +
+                "idTransaccion=" + idtransaccion +
                 ", monto='" + monto + '\'' +
                 ", concepto='" + concepto + '\'' +
                 ", fecha='" + fecha + '\'' +

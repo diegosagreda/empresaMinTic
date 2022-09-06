@@ -8,7 +8,7 @@ import java.io.Serializable;
 public class Usuario implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long idUsuario;
+    private long idusuario;
     private String usuario;
     private String contraseña;
 
@@ -17,11 +17,11 @@ public class Usuario implements Serializable {
     private Empleado empleado;
 
     public long getIdUsuario() {
-        return idUsuario;
+        return idusuario;
     }
 
-    public void setIdUsuario(long idUsuario) {
-        this.idUsuario = idUsuario;
+    public void setIdUsuario(long idusuario) {
+        this.idusuario = idusuario;
     }
 
     public String getUsuario() {
@@ -51,7 +51,7 @@ public class Usuario implements Serializable {
     @Override
     public String toString() {
         return "Usuario{" +
-                "idUsuario=" + idUsuario +
+                "idUsuario=" + idusuario +
                 ", usuario='" + usuario + '\'' +
                 ", Contraseña='" + contraseña + '\'' +
                 ", empleado=" + empleado +
