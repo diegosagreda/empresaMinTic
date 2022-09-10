@@ -6,6 +6,7 @@ import javax.persistence.*;
 @Table(name = "empleados")
 public class Empleado {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long idempleado;
     private String nombre;
     private String email;

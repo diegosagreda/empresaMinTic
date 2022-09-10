@@ -23,8 +23,11 @@ public class TransaccionController {
 
     //Guardar Transacciones
     @PostMapping("/transacciones")
-    public Transaccion guardarTransacciones(@RequestBody Transaccion transaccion){
-        return transaccionService.guardarTransaccion(transaccion);
+    public void guardarTransacciones(@RequestBody Transaccion transaccion, @RequestBody Long idempleado){
+
+        //transaccionService.guardarTransaccion(transaccion);
+        System.out.println(transaccion);
+        System.out.println(idempleado);
     }
     //Editar Transaccion
     @PatchMapping("/transacciones{id}")
