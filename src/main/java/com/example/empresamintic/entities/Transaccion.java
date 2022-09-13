@@ -15,18 +15,18 @@ public class Transaccion implements Serializable {
     private String fecha;
 
     @ManyToOne
-    @JoinColumn(name = "idEmpleado")
+    @JoinColumn(name = "idempleado")
     private Empleado empleado;
 
     @ManyToOne
-    @JoinColumn(name = "idEmpresa")
+    @JoinColumn(name = "idempresa")
     private Empresa empresa;
 
-    public Long getIdTransaccion() {
+    public Long getIdtransaccion() {
         return idtransaccion;
     }
 
-    public void setIdTransaccion(Long idtransaccion) {
+    public void setIdtransaccion(Long idtransaccion) {
         this.idtransaccion = idtransaccion;
     }
 
@@ -73,7 +73,7 @@ public class Transaccion implements Serializable {
     @Override
     public String toString() {
         return "Transaccion{" +
-                "idTransaccion=" + idtransaccion +
+                "idtransaccion=" + idtransaccion +
                 ", monto='" + monto + '\'' +
                 ", concepto='" + concepto + '\'' +
                 ", fecha='" + fecha + '\'' +

@@ -20,8 +20,9 @@ public class EmpleadoServiceImpl implements EmpleadoService{
     }
 
     @Override
-    public Empleado guardarEmpleado(Empleado empleado) {
-        return empleadoRepository.save(empleado);
+    public String guardarEmpleado(Empleado empleado) {
+       empleadoRepository.save(empleado);
+       return null;
     }
 
     @Override

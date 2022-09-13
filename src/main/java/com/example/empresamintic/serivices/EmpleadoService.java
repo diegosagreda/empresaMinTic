@@ -7,7 +7,7 @@ import java.util.List;
 public interface EmpleadoService {
 
     public List<Empleado> listarEmpleados();
-    public Empleado guardarEmpleado(Empleado empleado);
+    public String guardarEmpleado(Empleado empleado);
     public Empleado buscarEmpleadoId(Long id);
     public void eliminarEmpleado(Long id);
 }

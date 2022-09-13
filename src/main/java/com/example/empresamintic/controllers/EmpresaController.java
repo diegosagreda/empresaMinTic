@@ -31,8 +31,8 @@ public class EmpresaController{
 
     //Editar empresa
     @PatchMapping("/empresas/{id}")
-    public void editarEmpresa(@PathVariable("id") Long idempresa, @RequestBody Empresa empresa){
-        empresaService.guardarEmpresa(empresa);
+    public String editarEmpresa(@PathVariable("id") Empresa empresa){
+       return empresaService.guardarEmpresa(empresa);
     }
 
     //Eliminar empresa

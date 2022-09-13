@@ -42,8 +42,8 @@ public class EmpleadoController {
     }
     //Editar empleado
     @PatchMapping("/empleados/{id}")
-    public void editarEmpleado(@PathVariable("id") Long idempleado, @RequestBody Empleado empleado){
-        empleadoService.guardarEmpleado(empleado);
+    public String editarEmpleado(@PathVariable("id") Empleado empleado){
+        return  empleadoService.guardarEmpleado(empleado);
     }
     //Eliminar empleado
     @DeleteMapping ("/empleados/{id}")

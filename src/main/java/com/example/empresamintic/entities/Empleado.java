@@ -1,6 +1,7 @@
 package com.example.empresamintic.entities;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "empleados")
@@ -13,7 +14,8 @@ public class Empleado {
     private String telefono;
     private String rol;
 
-    @ManyToOne
+
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "idempresa")
     private Empresa empresa;
 
