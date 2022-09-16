@@ -8,7 +8,8 @@ import java.util.List;
 public interface EmpresaService {
 
     public List<Empresa> listarEmpresas();
-    public String guardarEmpresa(Empresa empresa);
-    public Empresa buscarEmpresaId(Long id);
-    public void eliminarEmpresa(Long id);
+    public Empresa guardarEmpresa(Empresa empresa);
+    public Empresa buscarEmpresaId(Long id) throws Exception;
+    public Empresa guardarEmpresaActualizada(Empresa empresa) throws Exception;
+    public String eliminarEmpresa(Long id);
 }

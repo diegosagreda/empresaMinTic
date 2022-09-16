@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class EmpresaServiceImpl implements EmpresaService{
@@ -15,23 +16,49 @@ public class EmpresaServiceImpl implements EmpresaService{
 
     @Override
     public List<Empresa> listarEmpresas() {
-        return (List<Empresa>)empresaRepository.findAll();
+        return empresaRepository.findAll();
     }
 
     @Override
-    public String guardarEmpresa(Empresa empresa) {
-        empresaRepository.save(empresa);
-        return null;
+    public Empresa guardarEmpresa(Empresa empresa) {
+       return empresaRepository.save(empresa);
+
     }
 
     @Override
-    public Empresa buscarEmpresaId(Long id) {
-        return empresaRepository.findById(id).orElse(null);
+    public Empresa buscarEmpresaId(Long id)throws Exception {
+        Optional<Empresa> empresaOptional= empresaRepository.findById(id);
+        if(empresaOptional.isPresent()){
+            return empresaOptional.get();
+        }else {
+            throw  new Exception("La empresa no existe");
+        }
+    }
+    @Override
+    public Empresa guardarEmpresaActualizada(Empresa empresa) throws Exception{
+        try {
+            Empresa empresaDb=buscarEmpresaId(empresa.getNitempresa());
+            if(empresa.getNombre()!=null){
+                empresaDb.setNombre(empresa.getNombre());
+            }
+            if(empresa.getDireccion()!=null){
+                empresaDb.setDireccion(empresa.getDireccion());
+            }
+            if(empresa.getTelefono()!=null){
+                empresaDb.setTelefono(empresa.getTelefono());
+            }
+            if (empresa.getTipo()!=null){
+                empresaDb.setTipo(empresa.getTipo());
+            }
+            return guardarEmpresa(empresaDb);
+        }catch (Exception e){
+            throw new Exception("No existe usuario para actualizar");
+        }
     }
 
     @Override
-    public void eliminarEmpresa(Long id) {
+    public String eliminarEmpresa(Long id) {
         empresaRepository.deleteById(id);
-
+        return "Empresa eliminada exitosamente";
     }
 }

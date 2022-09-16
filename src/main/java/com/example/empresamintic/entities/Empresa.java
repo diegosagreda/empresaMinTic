@@ -1,5 +1,7 @@
 package com.example.empresamintic.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
@@ -9,20 +11,39 @@ import java.util.List;
 public class Empresa implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private  long idempresa;
+    private long nitempresa;
     private String nombre;
     private String direccion;
     private String telefono;
-
     private String tipo;
 
-    public long getIdempresa() {
-        return idempresa;
+    @JsonIgnore
+    @OneToMany(mappedBy = "empresa")
+    private List<Empleado> empleado;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "empresa")
+    private List<Transaccion> transaccion;
+
+    public Empresa() {
     }
 
-    public void setIdempresa(long idempresa) {
-        this.idempresa = idempresa;
+    public Empresa(long nitempresa, String nombre, String direccion, String telefono, String tipo, List<Empleado> empleado, List<Transaccion> transaccion) {
+        this.nitempresa = nitempresa;
+        this.nombre = nombre;
+        this.direccion = direccion;
+        this.telefono = telefono;
+        this.tipo = tipo;
+        this.empleado = empleado;
+        this.transaccion = transaccion;
+    }
+
+    public long getNitempresa() {
+        return nitempresa;
+    }
+
+    public void setNitempresa(long nitempresa) {
+        this.nitempresa = nitempresa;
     }
 
     public String getNombre() {
@@ -57,14 +78,19 @@ public class Empresa implements Serializable {
         this.tipo = tipo;
     }
 
-    @Override
-    public String toString() {
-        return "Empresa{" +
-                "idempresa=" + idempresa +
-                ", nombre='" + nombre + '\'' +
-                ", direccion='" + direccion + '\'' +
-                ", telefono='" + telefono + '\'' +
-                ", tipo='" + tipo + '\'' +
-                '}';
+    public List<Empleado> getEmpleado() {
+        return empleado;
+    }
+
+    public void setEmpleado(List<Empleado> empleado) {
+        this.empleado = empleado;
+    }
+
+    public List<Transaccion> getTransaccion() {
+        return transaccion;
+    }
+
+    public void setTransaccion(List<Transaccion> transaccion) {
+        this.transaccion = transaccion;
     }
 }

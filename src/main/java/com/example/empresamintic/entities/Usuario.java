@@ -13,14 +13,23 @@ public class Usuario implements Serializable {
     private String contraseña;
 
     @OneToOne
-    @JoinColumn(name = "idEmpleado")
     private Empleado empleado;
 
-    public long getIdUsuario() {
+    public Usuario() {
+    }
+
+    public Usuario(long idusuario, String usuario, String contraseña, Empleado empleado) {
+        this.idusuario = idusuario;
+        this.usuario = usuario;
+        this.contraseña = contraseña;
+        this.empleado = empleado;
+    }
+
+    public long getIdusuario() {
         return idusuario;
     }
 
-    public void setIdUsuario(long idusuario) {
+    public void setIdusuario(long idusuario) {
         this.idusuario = idusuario;
     }
 
@@ -37,7 +46,7 @@ public class Usuario implements Serializable {
     }
 
     public void setContraseña(String contraseña) {
-        contraseña = contraseña;
+        this.contraseña = contraseña;
     }
 
     public Empleado getEmpleado() {
@@ -46,15 +55,5 @@ public class Usuario implements Serializable {
 
     public void setEmpleado(Empleado empleado) {
         this.empleado = empleado;
-    }
-
-    @Override
-    public String toString() {
-        return "Usuario{" +
-                "idUsuario=" + idusuario +
-                ", usuario='" + usuario + '\'' +
-                ", Contraseña='" + contraseña + '\'' +
-                ", empleado=" + empleado +
-                '}';
     }
 }

@@ -6,5 +6,5 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface EmpleadoRepository extends CrudRepository<Empleado, Long> {
+public interface EmpleadoRepository extends JpaRepository<Empleado, Long> {
 }

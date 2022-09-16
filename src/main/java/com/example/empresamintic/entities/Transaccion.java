@@ -1,5 +1,7 @@
 package com.example.empresamintic.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -15,12 +17,25 @@ public class Transaccion implements Serializable {
     private String fecha;
 
     @ManyToOne
-    @JoinColumn(name = "idempleado")
-    private Empleado empleado;
+    private Empresa empresa;
+
 
     @ManyToOne
-    @JoinColumn(name = "idempresa")
-    private Empresa empresa;
+    private Empleado empleado;
+
+
+
+    public Transaccion() {
+    }
+
+    public Transaccion(Long idtransaccion, String monto, String concepto, String fecha, Empleado empleado, Empresa empresa) {
+        this.idtransaccion = idtransaccion;
+        this.monto = monto;
+        this.concepto = concepto;
+        this.fecha = fecha;
+        this.empleado = empleado;
+        this.empresa = empresa;
+    }
 
     public Long getIdtransaccion() {
         return idtransaccion;
@@ -68,17 +83,5 @@ public class Transaccion implements Serializable {
 
     public void setEmpresa(Empresa empresa) {
         this.empresa = empresa;
-    }
-
-    @Override
-    public String toString() {
-        return "Transaccion{" +
-                "idtransaccion=" + idtransaccion +
-                ", monto='" + monto + '\'' +
-                ", concepto='" + concepto + '\'' +
-                ", fecha='" + fecha + '\'' +
-                ", empleado=" + empleado +
-                ", empresa=" + empresa +
-                '}';
     }
 }

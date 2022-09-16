@@ -1,30 +1,53 @@
 package com.example.empresamintic.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
 @Entity
 @Table(name = "empleados")
-public class Empleado {
+public class Empleado implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long idempleado;
+    private Long cedulaempleado;
     private String nombre;
     private String email;
     private String telefono;
     private String rol;
 
+    @JsonIgnore
+    @OneToOne(mappedBy = "empleado")
+    private Usuario usuario;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
-    @JoinColumn(name = "idempresa")
+
+    @ManyToOne
     private Empresa empresa;
 
-    public Long getIdempleado() {
-        return idempleado;
+    @JsonIgnore
+    @OneToMany(mappedBy = "empleado")
+    private  List<Transaccion> transaccion;
+    public Empleado() {
     }
 
-    public void setIdempleado(Long idempleado) {
-        this.idempleado = idempleado;
+    public Empleado(Long cedulaempleado, String nombre, String email, String telefono, String rol, Usuario usuario, Empresa empresa, List<Transaccion> transaccion) {
+        this.cedulaempleado = cedulaempleado;
+        this.nombre = nombre;
+        this.email = email;
+        this.telefono = telefono;
+        this.rol = rol;
+        this.usuario = usuario;
+        this.empresa = empresa;
+        this.transaccion = transaccion;
+    }
+
+    public Long getCedulaempleado() {
+        return cedulaempleado;
+    }
+
+    public void setCedulaempleado(Long cedulaempleado) {
+        this.cedulaempleado = cedulaempleado;
     }
 
     public String getNombre() {
@@ -42,7 +65,7 @@ public class Empleado {
     public void setEmail(String email) {
         this.email = email;
     }
-//dsds
+
     public String getTelefono() {
         return telefono;
     }
@@ -59,6 +82,14 @@ public class Empleado {
         this.rol = rol;
     }
 
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
     public Empresa getEmpresa() {
         return empresa;
     }
@@ -67,15 +98,11 @@ public class Empleado {
         this.empresa = empresa;
     }
 
-    @Override
-    public String toString() {
-        return "Empleado{" +
-                "idempleado=" + idempleado +
-                ", nombre='" + nombre + '\'' +
-                ", email='" + email + '\'' +
-                ", telefono='" + telefono + '\'' +
-                ", rol='" + rol + '\'' +
-                ", empresa=" + empresa +
-                '}';
+    public List<Transaccion> getTransaccion() {
+        return transaccion;
+    }
+
+    public void setTransaccion(List<Transaccion> transaccion) {
+        this.transaccion = transaccion;
     }
 }

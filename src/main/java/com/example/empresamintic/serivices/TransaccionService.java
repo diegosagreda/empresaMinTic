@@ -7,9 +7,10 @@ import java.util.List;
 public interface TransaccionService {
 
     public List<Transaccion> listarTransacciones();
-    public String guardarTransaccion(Transaccion transaccion);
-    public Transaccion buscarPorId(Long id);
-    public  void eliminarTransaccion(Long id);
+    public Transaccion guardarTransaccion(Transaccion transaccion);
+    public Transaccion buscarTransaccionId(Long id) throws Exception;
+    public Transaccion guardarTransaccionActualizada(Transaccion transaccion) throws Exception;
+    public  String eliminarTransaccion(Long id);
 
 
 
