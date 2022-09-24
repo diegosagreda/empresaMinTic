@@ -13,7 +13,7 @@ import java.util.List;
 @RestController
 //@RequestMapping("/ver/empresas")
 public class EmpleadoController {
-
+    //dueg
     @Autowired
     private EmpleadoService empleadoService;
 
