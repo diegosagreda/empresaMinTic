@@ -16,6 +16,8 @@ public class Transaccion implements Serializable {
     private String concepto;
     private String fecha;
 
+    private String tipo;
+
     @ManyToOne
     private Empresa empresa;
 
@@ -28,13 +30,14 @@ public class Transaccion implements Serializable {
     public Transaccion() {
     }
 
-    public Transaccion(Long idtransaccion, String monto, String concepto, String fecha, Empleado empleado, Empresa empresa) {
+    public Transaccion(Long idtransaccion, String monto, String concepto, String fecha, String tipo, Empresa empresa, Empleado empleado) {
         this.idtransaccion = idtransaccion;
         this.monto = monto;
         this.concepto = concepto;
         this.fecha = fecha;
-        this.empleado = empleado;
+        this.tipo = tipo;
         this.empresa = empresa;
+        this.empleado = empleado;
     }
 
     public Long getIdtransaccion() {
@@ -69,12 +72,12 @@ public class Transaccion implements Serializable {
         this.fecha = fecha;
     }
 
-    public Empleado getEmpleado() {
-        return empleado;
+    public String getTipo() {
+        return tipo;
     }
 
-    public void setEmpleado(Empleado empleado) {
-        this.empleado = empleado;
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 
     public Empresa getEmpresa() {
@@ -83,5 +86,13 @@ public class Transaccion implements Serializable {
 
     public void setEmpresa(Empresa empresa) {
         this.empresa = empresa;
+    }
+
+    public Empleado getEmpleado() {
+        return empleado;
+    }
+
+    public void setEmpleado(Empleado empleado) {
+        this.empleado = empleado;
     }
 }
