@@ -17,6 +17,8 @@ public class Empresa implements Serializable {
     private String telefono;
     private String tipo;
 
+    private  boolean estado;
+
     @JsonIgnore
     @OneToMany(mappedBy = "empresa")
     private List<Empleado> empleado;
@@ -28,7 +30,7 @@ public class Empresa implements Serializable {
     public Empresa() {
     }
 
-    public Empresa(long nitempresa, String nombre, String direccion, String telefono, String tipo, List<Empleado> empleado, List<Transaccion> transaccion) {
+    public Empresa(long nitempresa, String nombre, String direccion, String telefono, String tipo, List<Empleado> empleado, List<Transaccion> transaccion, boolean estado) {
         this.nitempresa = nitempresa;
         this.nombre = nombre;
         this.direccion = direccion;
@@ -36,6 +38,7 @@ public class Empresa implements Serializable {
         this.tipo = tipo;
         this.empleado = empleado;
         this.transaccion = transaccion;
+        this.estado=true;
     }
 
     public long getNitempresa() {
@@ -92,5 +95,13 @@ public class Empresa implements Serializable {
 
     public void setTransaccion(List<Transaccion> transaccion) {
         this.transaccion = transaccion;
+    }
+
+    public boolean isEstado() {
+        return estado;
+    }
+
+    public void setEstado(boolean estado) {
+        this.estado = estado;
     }
 }

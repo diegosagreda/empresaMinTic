@@ -17,6 +17,8 @@ public class Empleado implements Serializable {
     private String telefono;
     private String rol;
 
+    private boolean estado;
+
     @JsonIgnore
     @OneToOne(mappedBy = "empleado")
     private Usuario usuario;
@@ -31,7 +33,7 @@ public class Empleado implements Serializable {
     public Empleado() {
     }
 
-    public Empleado(Long cedulaempleado, String nombre, String email, String telefono, String rol, Usuario usuario, Empresa empresa, List<Transaccion> transaccion) {
+    public Empleado(Long cedulaempleado, String nombre, String email, String telefono, String rol, Usuario usuario, Empresa empresa, List<Transaccion> transaccion, boolean estado) {
         this.cedulaempleado = cedulaempleado;
         this.nombre = nombre;
         this.email = email;
@@ -40,6 +42,7 @@ public class Empleado implements Serializable {
         this.usuario = usuario;
         this.empresa = empresa;
         this.transaccion = transaccion;
+        this.estado=true;
     }
 
     public Long getCedulaempleado() {
@@ -104,5 +107,13 @@ public class Empleado implements Serializable {
 
     public void setTransaccion(List<Transaccion> transaccion) {
         this.transaccion = transaccion;
+    }
+
+    public boolean isEstado() {
+        return estado;
+    }
+
+    public void setEstado(boolean estado) {
+        this.estado = estado;
     }
 }
