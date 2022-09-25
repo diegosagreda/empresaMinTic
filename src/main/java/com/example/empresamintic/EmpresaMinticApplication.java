@@ -18,7 +18,7 @@ public class EmpresaMinticApplication {
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/**").allowedOrigins("https://silly-biscochitos-2c9ef7.netlify.app/").allowedMethods("*").allowedHeaders("*");
+                registry.addMapping("/**").allowedOrigins("http://localhost:5173/").allowedMethods("*").allowedHeaders("*");
             }
         };
     }
