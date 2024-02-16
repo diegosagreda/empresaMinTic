@@ -37,10 +37,10 @@ public class UsuarioServiceImpl implements UsuarioService {
     public Usuario guardarUsuarioActualizado(Usuario usuario) throws Exception {
        try {
            Usuario usuarioDb=buscarUsuarioId(usuario.getIdusuario());
-           if (usuario.getUsuario()!=null){
+           if (usuario.getUsuario()==null){
                usuarioDb.setUsuario(usuario.getUsuario());
            }
-           if(usuario.getContraseña()!=null){
+           if(usuario.getContraseña()==null){
                usuarioDb.setContraseña(usuario.getContraseña());
            }
            return guardarUsuario(usuarioDb);
